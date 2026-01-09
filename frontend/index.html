@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Typhoon Express</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="newspaper">
+
+    <!-- Masthead -->
+    <header class="masthead">
+        <h1>Typhoon Express</h1>
+        <p class="subtitle">Truth Before The Storm</p>
+    </header>
+
+    <!-- Credibility Checker (TOP FEATURE) -->
+    <section class="credibility-box">
+        <h2>Check News Credibility</h2>
+
+        <input type="text" id="headline" placeholder="Enter news headline">
+
+        <input type="file" id="image" accept="image/*">
+
+        <button onclick="checkNews()">Check</button>
+
+        <div id="output" class="output"></div>
+    </section>
+
+    <!-- Newspaper Body -->
+    <section class="columns">
+        <div class="column">
+            <h3>World</h3>
+            <p>
+                Journalism plays a crucial role in informing society.
+                Newspapers have historically been trusted sources of verified information.
+            </p>
+        </div>
+
+        <div class="column">
+            <h3>Technology</h3>
+            <p>
+                With the rise of AI-generated content, credibility checking has become essential
+                to prevent misinformation and false narratives.
+            </p>
+        </div>
+
+        <div class="column">
+            <h3>Opinion</h3>
+            <p>
+                Truth is not what spreads the fastest — it is what survives scrutiny.
+                Responsible reporting matters more than ever.
+            </p>
+        </div>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
