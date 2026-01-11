@@ -18,7 +18,7 @@ async function checkNews() {
     }
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/check", {
+        const response = await fetch("https://typhoon-express.onrender.com", {
             method: "POST",
             body: formData
         });
