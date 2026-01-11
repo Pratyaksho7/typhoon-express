@@ -6,23 +6,28 @@ from ai import check_credibility
 
 app = FastAPI()
 
-# CORS (allow frontend to talk to backend)
+# ✅ ENABLE CORS (GitHub Pages → Render)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # later restrict this
+    allow_origins=["*"],  # allow all for now
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# ✅ Health check (REQUIRED by Render)
+@app.get("/")
+def health():
+    return {"status": "FastAPI backend running"}
+
+# ✅ Main API
 @app.post("/check")
 async def check_news(
     headline: str = Form(...),
     image: UploadFile | None = None
 ):
-    # Get raw AI output (string)
     raw_result = check_credibility(headline, image)
 
-    # Remove markdown formatting if present
+    # Clean AI response
     cleaned_result = (
         raw_result
         .replace("```json", "")
@@ -30,10 +35,8 @@ async def check_news(
         .strip()
     )
 
-    # Convert string JSON → real JSON
     try:
-        parsed_result = json.loads(cleaned_result)
-        return parsed_result
+        return json.loads(cleaned_result)
     except json.JSONDecodeError:
         return {
             "error": "AI returned invalid JSON",
